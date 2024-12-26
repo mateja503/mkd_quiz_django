@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Results</title>
+</head>
+<body>
+    <h1>All Results</h1>
+    <ul>
+        {% for result in results %}
+        <li>
+            <a href="{% url 'result_detail' result.id %}">{{ result.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% if user.is_staff %}
+    <p>
+        <a href="{% url 'create_result' %}">Create New Result</a>
+    </p>
+    {% endif %}
+</body>
+</html>

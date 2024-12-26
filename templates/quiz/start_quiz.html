@@ -1,0 +1,36 @@
+{% include 'base.html'%}
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Quiz</title>
+</head>
+
+
+<body>
+    <h1>Start Quiz</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="Mixed">Mixed</option>
+            {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="difficulty">Difficulty:</label>
+        <select name="difficulty" id="difficulty">
+            <option value="Mixed">Mixed</option>
+            {% for difficulty in difficulties %}
+            <option value="{{ difficulty }}">{{ difficulty }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Start Quiz</button>
+    </form>
+</body>
+</html>
+{% include 'footer.html' %}

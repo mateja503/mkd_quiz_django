@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Posts</title>
+    <style>
+        .post {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .post img {
+            width: 20%; /* Adjust image size */
+            height: auto;
+        }
+        .post-snippet {
+            margin-bottom: 10px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Posts</h1>
+    {% for post in posts %}
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p><strong>Upload Date:</strong> {{ post.upload_date|date:"F j, Y, g:i a" }}</p> <!-- Display the upload date -->
+        <div class="post-snippet">
+            <p>{{ post.text|truncatewords:100 }}</p> <!-- Display the first 100 words -->
+        </div>
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        <div class="buttons">
+            <a href="{% url 'post_detail' post.id %}"><button>Read Post</button></a>
+            {% if request.user.is_staff %}
+                <a href="{% url 'admin:posts_post_change' post.id %}"><button>Edit Post</button></a>
+                <form action="{% url 'admin:posts_post_delete' post.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

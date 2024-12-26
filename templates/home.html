@@ -1,0 +1,76 @@
+{% include 'base.html' %}
+    {% include 'header.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<style>
+    body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwUVzvOzspHJXk_R7gAOUkqRiTo-yYym81AA&s'); /* Replace with the actual URL of your sun image */
+    background-size: cover; /* Make sure the background image covers the entire page */
+    background-position: center; /* Center the image */
+    {#// background-repeat: no-repeat;#}
+    {#// background-attachment: fixed; /* Make the background image fixed */#}
+    margin: 0;
+    height: 100vh; /* Ensure the page takes full height */
+   
+  
+  }
+  
+  
+  /* Style for the card */
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure the card is centered vertically and horizontally */
+    z-index: 2;
+    position: relative;
+    padding: 20px;
+    
+  }
+  
+  .card {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 3; /* Ensures the card stays in front of the background */
+    width: 80%;
+    max-width: 800px;
+  }
+  
+  
+  /* Additional styling to ensure content in the card is well spaced */
+  .card-body {
+    padding: 20px;
+    background-color: #e0e0af;
+  }
+
+  .card-title{
+    display: flex;
+    justify-content: center;
+  }
+  
+</style>
+
+<body>
+ 
+   <div class="card-container">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Македонски Квиз</h1>
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque dui a justo ullamcorper, vitae tempor ipsum tincidunt. Suspendisse potenti. Sed aliquam auctor nisi, non feugiat erat tincidunt vel. Vivamus eget ligula non erat varius dictum a vel dui. Integer vitae efficitur enim, et pharetra sem. Ut dapibus orci at sapien efficitur, id volutpat ipsum faucibus. Phasellus tincidunt maximus velit, a euismod nisl varius et. Nulla sed diam eget libero cursus facilisis.
+          In lobortis mi sed ante hendrerit, ac tincidunt ligula maximus. Curabitur id tincidunt libero. Donec tempus urna in justo tempus efficitur. Aenean scelerisque eros quis nisl gravida vehicula. Etiam molestie hendrerit nulla, et tincidunt ante rutrum a. Suspendisse potenti. Nulla nec tempor lectus, ut luctus lorem.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+{% include 'footer.html' %}
+

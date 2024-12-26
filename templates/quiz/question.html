@@ -1,0 +1,66 @@
+<form method="post">
+  {% csrf_token %}
+  <h2>{{ question.question_text }}</h2>
+
+
+  <!-- Display choices, hiding removed ones if 50:50 is used -->
+  <div>
+    {% if removed_choices %}
+      {% if removed_choices.0 is not 1 and removed_choices.1 is not 1 %}
+        <label>
+          <input type="radio" name="choice" value="1" required> {{ question.choice_1 }}
+        </label><br>
+      {% endif %}
+
+      {% if removed_choices.0 is not 2 and removed_choices.1 is not 2 %}
+        <label>
+          <input type="radio" name="choice" value="2" required> {{ question.choice_2 }}
+        </label><br>
+      {% endif %}
+
+      {% if removed_choices.0 is not 3 and removed_choices.1 is not 3 %}
+        <label>
+          <input type="radio" name="choice" value="3" required> {{ question.choice_3 }}
+        </label><br>
+      {% endif %}
+
+      {% if removed_choices.0 is not 4 and removed_choices.1 is not 4 %}
+        <label>
+          <input type="radio" name="choice" value="4" required> {{ question.choice_4 }}
+        </label><br>
+      {% endif %}
+    {% else %}
+      <!-- Show all choices if 50:50 is not used -->
+      <label>
+        <input type="radio" name="choice" value="1" required> {{ question.choice_1 }}
+      </label><br>
+      <label>
+        <input type="radio" name="choice" value="2" required> {{ question.choice_2 }}
+      </label><br>
+      <label>
+        <input type="radio" name="choice" value="3" required> {{ question.choice_3 }}
+      </label><br>
+      <label>
+        <input type="radio" name="choice" value="4" required> {{ question.choice_4 }}
+      </label><br>
+    {% endif %}
+  </div>
+
+  <!-- Include hidden input for question ID -->
+  <input type="hidden" name="question_id" value="{{ question.id }}">
+
+  <!-- Buttons for submitting an answer or using 50:50 -->
+  <div>
+    <button type="submit">Submit</button>
+    {% if not lifeline_used %}
+      <button type="submit" name="use_50_50" value="true">Use 50:50</button>
+    {% else %}
+      <button type="button" disabled>50:50 Used</button>
+    {% endif %}
+  </div>
+</form>
+
+<!-- Optional navigation to quit or restart -->
+<div class="navigation">
+  <a href="{% url 'quiz:start' %}">Restart Quiz</a>
+</div>

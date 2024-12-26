@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ result.title }}</title>
+</head>
+<body>
+    <h1>{{ result.title }}</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contestant in contestants %}
+            <tr>
+                <td>{{ contestant.name }}</td>
+                <td>{{ contestant.surname }}</td>
+                <td>{{ contestant.points }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        <!-- Admin-specific link for Excel import -->
+    {% if request.user.is_staff %}
+    <a href="{% url 'import_results_from_excel' result.id %}">Import Results from Excel</a>
+    {% endif %}
+
+    <a href="{% url 'results_list' %}"><button>Back to All Results</button></a>
+</body>
+</html>

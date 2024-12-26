@@ -1,0 +1,66 @@
+
+{% include 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<style>
+    .nav-link {
+    color: white;
+    &:hover{
+        cursor: pointer;
+        color: #eeff00 !important;
+    }
+  }
+</style>
+
+<body>
+
+
+
+<header class="p-3 text-white" style="background-color: #c53434; ">
+    <div class="container" style=" width: 100%;">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"> <i class="bi bi-bootstrap me-2" style="font-size: 40px;"></i></a>
+         
+        <ul class="nav col-6 col-lg-auto me-lg-auto mb-2 justify-content-between mb-md-2" >
+            <li><a href="/quiz" class="nav-link px-2 text-white">Quiz</a></li>
+          <li><a href="/quiz/leaderboard" class="nav-link px-2 text-white">Ранг Листа</a></li>
+            {% if user.is_staff %}
+          <li><a href="/quiz/excel" class="nav-link px-2 text-white">Еxcel Квиз</a></li>
+            {% endif %}
+          <li><a  href="{% url 'results_list' %}" class="nav-link px-2 text-white">Лига</a></li>
+          <li><a href="/posts" class="nav-link px-2 text-white">Постови</a></li>
+          <li><a href="/about" class="nav-link px-2 text-white">За нас</a></li>
+        </ul>
+
+
+        <div class="social-icons d-flex align-items-center ms-auto me-3">
+            <a href="https://www.facebook.com" target="_blank" class="text-white me-3">
+              <i class="bi bi-facebook" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="text-white">
+              <i class="bi bi-instagram" style="font-size: 30px;"></i>
+            </a>
+          </div>
+
+
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <input type="search" class="form-control form-control-dark" placeholder="Пребарај..." aria-label="Search">
+            </form>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Пребарај</button>
+        </div>
+
+
+      </div>
+    </div>
+  </header>
+
+
+
+</body>
+</html>

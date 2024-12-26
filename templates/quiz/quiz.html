@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% for question in questions %}
+        <div>
+            <p>{{ question.question_text }}</p>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="1"> {{ question.choice_1 }}
+            </label>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="2"> {{ question.choice_2 }}
+            </label>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="3"> {{ question.choice_3 }}
+            </label>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="4"> {{ question.choice_4 }}
+            </label>
+        </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+    {% if score is not none %}
+    <h2>You got {{ score }} out of {{ total }} questions correct!</h2>
+    {% endif %}
+</body>
+</html>
